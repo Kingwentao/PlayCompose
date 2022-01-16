@@ -1,24 +1,33 @@
 package com.example.playcompose
 
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.ScrollState
-import androidx.compose.foundation.horizontalScroll
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.*
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 
 class MainActivity : ComponentActivity() {
+
+    companion object{
+        private const val TAG = "MainActivity"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -31,10 +40,7 @@ class MainActivity : ComponentActivity() {
 //                Text(text = "LinearLayout and Row")
 //                Image(painterResource(id = R.drawable.ic_launcher_background), "icon")
 //            }
-//            Column {
-//                Text(text = "LinearLayout and Column")
-//                Image(painterResource(id = R.drawable.ic_launcher_background), "icon")
-//            }
+
 //
 //            // Box => FrameLayout/RelativeLayout
 //            Box{
@@ -53,9 +59,39 @@ class MainActivity : ComponentActivity() {
 //                }
 //            }
 
-//            //Modifier.verticalScroll() / Modifier.horizontalScroll() => ScrollView
+//            // Modifier.verticalScroll() / Modifier.horizontalScroll() => ScrollView
 //            Column(Modifier.verticalScroll(ScrollState())) {//...}
 
+            // Modifier对顺序是敏感的，比如先调用padding、后background => margin效果
+            // 先调用background，后padding => padding效果
+            // Compose控件布局大小类型是wrap_content
+            // 通用的设置一般都放在Modifier, 专项的设置就放着控件函数里。比如点击事件clickable，但Button控件比较特殊
+            // Button就是用来点击的，所以为了方便，开发者直接给了一个onClick函数，就不需要通过Modifier了
+            Column(
+                Modifier
+                    .padding(8.dp)
+                    .background(Color.Red)
+            ) {
+                Text(
+                    text = "LinearLayout and Column",
+                    // clickable放在前面和后面的效果也是不一样的，放在前面会对后续的padding也生效
+                    Modifier
+                        .clickable {
+                            Log.d(TAG, "onCreate: click text")
+                        }
+                        .background(Color.Yellow, RoundedCornerShape(3.dp))
+                        .padding(10.dp)
+                        , fontSize = 20.sp
+                )
+                Image(
+                    painterResource(id = R.drawable.nb), "icon",
+                    Modifier
+                        .clip(CircleShape)
+                        .size(250.dp)
+                )
+            }
+            // Button
+            Button(onClick = { /*TODO*/ }) { }
         }
     }
 }
