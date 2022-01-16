@@ -13,6 +13,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
+import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Text
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -24,7 +25,7 @@ import androidx.compose.ui.unit.sp
 
 class MainActivity : ComponentActivity() {
 
-    companion object{
+    companion object {
         private const val TAG = "MainActivity"
     }
 
@@ -80,8 +81,7 @@ class MainActivity : ComponentActivity() {
                             Log.d(TAG, "onCreate: click text")
                         }
                         .background(Color.Yellow, RoundedCornerShape(3.dp))
-                        .padding(10.dp)
-                        , fontSize = 20.sp
+                        .padding(10.dp), fontSize = 20.sp
                 )
                 Image(
                     painterResource(id = R.drawable.nb), "icon",
@@ -89,9 +89,18 @@ class MainActivity : ComponentActivity() {
                         .clip(CircleShape)
                         .size(250.dp)
                 )
+
+                // Button: 放在material库中的，因为遵循了material design的规范
+                Button(onClick = { Log.d(TAG, "button clicked.") }) {
+                    Image(painterResource(id = R.drawable.ic_launcher_background), "button icon")
+                    Text("i am button")
+                }
+//                OutlinedButton(onClick = { Log.d(TAG, "button clicked.") }) {
+//                    Image(painterResource(id = R.drawable.ic_launcher_background), "button icon")
+//                    Text("i am outline button")
+//                }
             }
-            // Button
-            Button(onClick = { /*TODO*/ }) { }
+
         }
     }
 }
