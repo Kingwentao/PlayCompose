@@ -6,6 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Text
+import androidx.compose.material.TextField
 import androidx.compose.runtime.*
 import androidx.lifecycle.lifecycleScope
 import com.example.playcompose.ui.getNormalView
@@ -19,6 +20,7 @@ class MainActivity : ComponentActivity() {
         private const val TAG = "MainActivity"
     }
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // mutableStateOf具备订阅功能，内部会去取值
@@ -28,8 +30,21 @@ class MainActivity : ComponentActivity() {
         setContent {
 //            getNormalView()
 //            Text(name)
-            //  var name by mutableStateOf("compose")
-            UseRemember()
+            
+              // remember
+//            UseRemember()
+//            val name by remember {
+//                mutableStateOf("compose")
+//            }
+              // stateless
+//            Stateless(name)
+            //
+            var value by remember {
+                mutableStateOf("abc")
+            }
+            materialUI(value = value, onValueChange =  { newValue ->
+                value = newValue
+            })
         }
 
     }
@@ -51,4 +66,14 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+
+    @Composable
+    fun Stateless(name: String) {
+        Text("name is $name")
+    }
+    
+    @Composable
+    fun materialUI(value: String, onValueChange: (String) -> Unit){
+        TextField(value = value, onValueChange = onValueChange)
+    }
 }
