@@ -1,10 +1,12 @@
 package com.example.playcompose
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
+import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.*
@@ -28,6 +30,7 @@ class MainActivity : ComponentActivity() {
 
         // 使用by委托需要手动import androidx.compose.runtime.getValue/setValue，目前不支持自动导入
         setContent {
+            nextActivity()
 //            getNormalView()
 //            Text(name)
             
@@ -39,14 +42,26 @@ class MainActivity : ComponentActivity() {
               // stateless
 //            Stateless(name)
             //
-            var value by remember {
-                mutableStateOf("abc")
-            }
-            materialUI(value = value, onValueChange =  { newValue ->
-                value = newValue
-            })
+//            var value by remember {
+//                mutableStateOf("abc")
+//            }
+//            materialUI(value = value, onValueChange =  { newValue ->
+//                value = newValue
+//            })
         }
 
+    }
+
+    @Composable
+    private fun nextActivity() {
+        Column{
+            Button(onClick = {
+                Log.d("", "button clicked.")
+                startActivity(Intent(this@MainActivity, StateObserverAndAutoUpdate::class.java))
+            }){
+                Text("状态订阅和自动更新")
+            }
+        }
     }
 
     /**
