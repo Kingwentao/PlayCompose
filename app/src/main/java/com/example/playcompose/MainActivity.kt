@@ -61,6 +61,12 @@ class MainActivity : ComponentActivity() {
             }){
                 Text("状态订阅和自动更新")
             }
+
+            Button(onClick = {
+                startActivity(Intent(this@MainActivity, DerivedStateOfActivity::class.java))
+            }) {
+                Text("DerivedStateOf")
+            }
         }
     }
 
