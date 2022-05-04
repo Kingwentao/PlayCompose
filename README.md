@@ -1,7 +1,7 @@
 # PlayCompose
-a compose learn example
+a compose learn note.
 
-### Compsoe学习笔记
+### Compose学习笔记
 
 [Compose学习笔记（一）基本控件](https://juejin.cn/post/7053774854910115853)
 
