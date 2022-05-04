@@ -55,7 +55,7 @@ class StateObserverAndAutoUpdate : ComponentActivity() {
     }
 
     @Composable
-    fun NumberList(numbers: MutableList<Int>) {
+    fun NumberList(numbers: List<Int>) {
         Column {
             Button(onClick = {
                 // 更新列表对象才能触发Compose的重组
