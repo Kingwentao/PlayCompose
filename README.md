@@ -10,3 +10,5 @@ a compose learn example
 [Compose学习笔记（三）重组和无状态](https://juejin.cn/post/7064187120805478413)
 
 [Compose学习笔记（四）：状态机制和重组优化](https://juejin.cn/post/7092696334976679944)
+
+[Compose学习笔记（五）：derivedStateOf和remember的使用](https://juejin.cn/post/7094029276592226312)
