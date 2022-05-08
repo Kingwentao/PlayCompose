@@ -67,6 +67,12 @@ class MainActivity : ComponentActivity() {
             }) {
                 Text("DerivedStateOf")
             }
+
+            Button(onClick = {
+                startActivity(Intent(this@MainActivity, CompositionLocalActivity::class.java))
+            }) {
+                Text("CompositionLocal")
+            }
         }
     }
 
