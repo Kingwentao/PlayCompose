@@ -18,6 +18,8 @@
         <activity
             android:name=".StateObserverAndAutoUpdate"
             android:exported="false" />
+        <activity android:name=".AnimateActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

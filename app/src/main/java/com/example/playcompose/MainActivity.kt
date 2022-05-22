@@ -73,6 +73,12 @@ class MainActivity : ComponentActivity() {
             }) {
                 Text("CompositionLocal")
             }
+
+            Button(onClick = {
+                startActivity(Intent(this@MainActivity, AnimateActivity::class.java))
+            }) {
+                Text("Animation")
+            }
         }
     }
 
