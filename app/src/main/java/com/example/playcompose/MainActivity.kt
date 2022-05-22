@@ -11,7 +11,6 @@ import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.*
 import androidx.lifecycle.lifecycleScope
-import com.example.playcompose.ui.getNormalView
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -75,9 +74,9 @@ class MainActivity : ComponentActivity() {
             }
 
             Button(onClick = {
-                startActivity(Intent(this@MainActivity, AnimateActivity::class.java))
+                startActivity(Intent(this@MainActivity, AnimateSpecActivity::class.java))
             }) {
-                Text("Animation")
+                Text("AnimationSpec")
             }
         }
     }
