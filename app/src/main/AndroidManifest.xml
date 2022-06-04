@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PlayCompose">
         <activity
+            android:name=".StopAnimateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DecayAnimateActivity"
+            android:exported="false" />
+        <activity
             android:name=".CompositionLocalActivity"
             android:exported="false" />
         <activity
@@ -18,7 +24,8 @@
         <activity
             android:name=".StateObserverAndAutoUpdate"
             android:exported="false" />
-        <activity android:name=".AnimateSpecActivity"
+        <activity
+            android:name=".AnimateSpecActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

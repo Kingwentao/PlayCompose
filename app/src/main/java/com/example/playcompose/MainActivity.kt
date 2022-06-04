@@ -78,6 +78,19 @@ class MainActivity : ComponentActivity() {
             }) {
                 Text("AnimationSpec")
             }
+
+            Button(onClick = {
+                startActivity(Intent(this@MainActivity, DecayAnimateActivity::class.java))
+            }) {
+                Text("DecayAnimateActivity")
+            }
+
+            Button(onClick = {
+                startActivity(Intent(this@MainActivity, StopAnimateActivity::class.java))
+            }) {
+                Text("中断动画")
+            }
+
         }
     }
 
