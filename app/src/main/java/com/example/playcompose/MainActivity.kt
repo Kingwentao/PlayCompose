@@ -91,6 +91,11 @@ class MainActivity : ComponentActivity() {
                 Text("中断动画")
             }
 
+            Button(onClick = {
+                startActivity(Intent(this@MainActivity, TransitionActivity::class.java))
+            }) {
+                Text("动画之Transition")
+            }
         }
     }
 

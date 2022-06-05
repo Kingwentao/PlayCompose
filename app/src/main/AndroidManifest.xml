@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PlayCompose">
         <activity
+            android:name=".TransitionActivity"
+            android:exported="false" />
+        <activity
             android:name=".StopAnimateActivity"
             android:exported="false" />
         <activity
