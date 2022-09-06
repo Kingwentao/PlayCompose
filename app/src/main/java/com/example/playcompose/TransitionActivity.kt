@@ -90,6 +90,8 @@ class TransitionActivity : AppCompatActivity() {
                 }
             }
 //            TransitionExample2()
+            // 实现两个控件切换的淡入淡出效果
+//            CrossFade()
         }
     }
 
@@ -174,6 +176,43 @@ class TransitionActivity : AppCompatActivity() {
                             BoxState.SMALL
                         }
                 })
+    }
+
+    /**
+     * 实现两个控件切换的淡入淡出效果
+     */
+    @Composable
+    fun CrossFade() {
+        Column {
+            var curBoxState by remember { mutableStateOf(BoxState.SMALL) }
+            Crossfade(targetState = curBoxState) {
+                when (it) {
+                    BoxState.SMALL -> {
+                        Box(
+                            Modifier
+                                .size(20.dp)
+                                .background(Color.Green)
+                        )
+                    }
+                    BoxState.BIG -> {
+                        Box(
+                            Modifier
+                                .size(40.dp)
+                                .background(Color.Red)
+                        )
+                    }
+                }
+            }
+            Button(onClick = {
+                curBoxState = if (curBoxState == BoxState.SMALL) {
+                    BoxState.BIG
+                } else {
+                    BoxState.SMALL
+                }
+            }) {
+                Text(text = "切换")
+            }
+        }
     }
 
     enum class BoxState {
