@@ -15,15 +15,11 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.IntOffset
-import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 
 class TransitionActivity : AppCompatActivity() {
@@ -92,6 +88,8 @@ class TransitionActivity : AppCompatActivity() {
 //            TransitionExample2()
             // 实现两个控件切换的淡入淡出效果
 //            CrossFade()
+            // 精细控制两个控件切换的效果
+//            AnimationContent()
         }
     }
 
@@ -186,6 +184,45 @@ class TransitionActivity : AppCompatActivity() {
         Column {
             var curBoxState by remember { mutableStateOf(BoxState.SMALL) }
             Crossfade(targetState = curBoxState) {
+                when (it) {
+                    BoxState.SMALL -> {
+                        Box(
+                            Modifier
+                                .size(20.dp)
+                                .background(Color.Green)
+                        )
+                    }
+                    BoxState.BIG -> {
+                        Box(
+                            Modifier
+                                .size(40.dp)
+                                .background(Color.Red)
+                        )
+                    }
+                }
+            }
+            Button(onClick = {
+                curBoxState = if (curBoxState == BoxState.SMALL) {
+                    BoxState.BIG
+                } else {
+                    BoxState.SMALL
+                }
+            }) {
+                Text(text = "切换")
+            }
+        }
+    }
+
+    @OptIn(ExperimentalAnimationApi::class)
+    @Preview
+    @Composable
+    fun AnimationContent() {
+        Column {
+            var curBoxState by remember { mutableStateOf(BoxState.SMALL) }
+            AnimatedContent(targetState = curBoxState, transitionSpec = {
+                fadeIn(tween(3000)) with
+                        fadeOut(tween(3000, 3000))
+            }) {
                 when (it) {
                     BoxState.SMALL -> {
                         Box(
